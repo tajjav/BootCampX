@@ -1,0 +1,10 @@
+SELECT students.name AS student,
+       AVG(assignment_submissions.duration) AS average_assignment_duration
+FROM students
+JOIN assignment_submissions ON students.id = student_id
+WHERE students.end_date IS NULL
+GROUP BY students.name --, students.end_date
+--HAVING students.end_date IS NULL
+ORDER BY AVG(assignment_submissions.duration) DESC;
+
+--both works either use WHERE or HAVING but with students.end_date in GROUP BY
